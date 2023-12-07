@@ -17,11 +17,6 @@ def send_email(recipient_email: str | list, header_text: str, msg_text: str):
     login = LOGIN
     password = PASSWORD
 
-    msg = MIMEText(msg_text, 'plain', 'utf-8')
-    msg['Subject'] = Header(header_text, 'utf-8')
-    msg['From'] = login
-    msg['To'] = ', '.join(recipient_email)
-
     s = smtplib.SMTP('smtp.yandex.ru', 587, timeout=10)
 
     try:
@@ -39,6 +34,10 @@ def send_email(recipient_email: str | list, header_text: str, msg_text: str):
 
 
 def main():
+    emails = ['pythonscriptovich@yandex.ru']
+    header = 'Заголовок 2'
+    message = 'Тестовое тело сообщения 2'
+    send_email(emails, header, message)
     emails = ['pythonscriptovich@yandex.ru']
     header = 'Заголовок 2'
     message = 'Тестовое тело сообщения 2'
